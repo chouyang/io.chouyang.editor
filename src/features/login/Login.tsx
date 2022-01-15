@@ -5,11 +5,7 @@ import {useEffect, useState} from "react";
 import {ApiStatus} from "../../constants/api";
 import styles from './Login.module.scss';
 
-type Props = {
-  onClose: () => void
-}
-
-export default function Login(props: Props) {
+export default function Login(props: any) {
   const [id, setId] = useState<string>("")
   const [randomId, setRandomId] = useState<number>(0)
 

@@ -1,13 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import {ActiveWindowType} from "../../utils";
 
 export interface MenubarState {
-  activeWindow: ActiveWindowType,
+  activeWindow: string;
   activeItem: string;
   hoverItem: string;
-  activeEntry: string,
-  hoverEntry: string,
-  status: 'idle' | 'loading' | 'failed';
+  activeEntry: string;
+  hoverEntry: string;
 }
 
 const initialState: MenubarState = {
@@ -16,7 +14,6 @@ const initialState: MenubarState = {
   hoverItem: '',
   activeEntry: '',
   hoverEntry: '',
-  status: 'idle',
 };
 
 export const menubarSlice = createSlice({
@@ -30,7 +27,7 @@ export const menubarSlice = createSlice({
     hoverMenubar: (state, action: PayloadAction<string>) => {
       state.hoverItem = action.payload || '';
     },
-    clickMenubarEntry: (state, action: PayloadAction<ActiveWindowType>) => {
+    clickMenubarEntry: (state, action: PayloadAction<string>) => {
       state.activeItem = '';
       state.hoverItem = '';
       state.activeWindow = action.payload;
