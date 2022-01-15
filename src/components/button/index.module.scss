@@ -1,0 +1,22 @@
+
+.CsButton {
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 3px;
+  border: none;
+  color: #FFFFFF;
+  cursor: pointer;
+
+  &.info {
+    color: #000000;
+    background-color: #FFFFFF;
+  }
+
+  &.success {
+    background-color: #2E76C3;
+  }
+
+  &.danger {
+    background-color: #FF0000;
+  }
+}

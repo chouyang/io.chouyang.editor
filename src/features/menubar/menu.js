@@ -6,7 +6,7 @@ const menu = [
       { id: 'about-me', label: 'About 丑羊', window: 'about-me', disabled: false },
       { id: 'service', label: 'Service', shortcut: '▶' },
       {},
-      { id: 'login', label: 'Login...', window: 'login', disabled: false },
+      { id: 'login', label: 'Login...', window: 'Login', disabled: false },
       {},
       { id: 'preference', label: 'Preference...', shortcut: '⌘,' },
       {},

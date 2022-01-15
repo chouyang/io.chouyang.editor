@@ -38,8 +38,8 @@ export function Menubar() {
                       key={subKey}
                       className={[style.DropDownItem, sub.disabled === false ? '' : 'disabled'].join(' ')}
                       onClick={() => dispatch(clickMenubarEntry(sub.window || ""))}
-                      onMouseEnter={() => hoverMenubarEntry(sub.id)}
-                      onMouseLeave={() => hoverMenubarEntry('')}
+                      onMouseEnter={() => dispatch(hoverMenubarEntry(sub.id))}
+                      onMouseLeave={() => dispatch(hoverMenubarEntry(''))}
                     >
                       <span>
                         {sub.icon && <img src={loadImage(sub.icon)} alt="icon"/>}
@@ -53,7 +53,7 @@ export function Menubar() {
                             <span
                               key={entryKey}
                               className={[style.DropDownSubItem, entry.disabled === false ? '' : 'disabled'].join(' ')}
-                              onClick={() => clickMenubarEntry(entry.window || "")}
+                              onClick={() => dispatch(clickMenubarEntry(entry.window || ""))}
                             >
                               <span>
                                 {entry.icon && <img src={loadImage(entry.icon)} alt="icon"/>}

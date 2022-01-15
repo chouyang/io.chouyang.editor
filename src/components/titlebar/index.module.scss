@@ -1,0 +1,46 @@
+@import '../../styles/theme';
+
+.TitleBar {
+  width: 100%;
+  height: 20px;
+  border-bottom: $default-border;
+  background-color: $hover-color;
+  background-image: linear-gradient(#DDDDDD, #BDBDBD);
+  text-align: center;
+  position: relative;
+
+  .Close, .Minimize, .Maximize {
+    position: absolute;
+    top: 4px;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    font-size: 0;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  .Disabled {
+    color: $disabled-button-color!important;
+    background-color: $disabled-button-color!important;
+    cursor: not-allowed;
+  }
+
+  .Close {
+    left: 8px;
+    color: $close-button-color;
+    background-color: $close-button-color;
+  }
+
+  .Minimize {
+    left: 28px;
+    color: $minimize-button-color;
+    background-color: $minimize-button-color;
+  }
+
+  .Maximize {
+    left: 48px;
+    color: $maximize-button-color;
+    background-color: $maximize-button-color;
+  }
+}
