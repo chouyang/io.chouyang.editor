@@ -10,7 +10,7 @@ const menu = [
       {},
       { id: 'preference', label: 'Preference...', shortcut: '⌘,' },
       {},
-      { id: 'quit', label: 'Quit', shortcut: '⌘Q', window: 'quit', disabled: false },
+      { id: 'quit', label: 'Quit', shortcut: '⌘Q', window: 'Quit', disabled: false },
     ]
   },
   {
