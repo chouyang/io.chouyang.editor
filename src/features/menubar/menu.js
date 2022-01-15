@@ -358,7 +358,7 @@ const menu = [
       { id: 'edit-custom-properties', label: 'Edit Custom Properties...' },
       { id: 'edit-custom-vm-options', label: 'Edit Custom VM Options...' },
       {},
-      { id: 'register', label: 'Register...', window: 'register', disabled: false },
+      { id: 'register', label: 'Register...', window: 'Register', disabled: false },
     ]
   }
 ];

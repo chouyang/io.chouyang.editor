@@ -3,13 +3,14 @@ import CsButton from "../../components/button";
 import {loadImage} from "../../utils";
 import {useEffect, useState} from "react";
 import {ApiStatus} from "../../constants/api";
-import styles from './Login.module.scss';
+import styles from './Register.module.scss';
 
 type Props = {
   onClose: () => void
 }
 
-export default function Login(props: Props) {
+export default function Register(props: Props) {
+
   const [id, setId] = useState<string>("")
   const [randomId, setRandomId] = useState<number>(0)
 
@@ -34,11 +35,11 @@ export default function Login(props: Props) {
   })
 
   return (
-    <div className={styles.Login}>
+    <div className={styles.Register}>
       <TitleBar
-        onClose={ props.onClose }
+        onClose={props.onClose}
       >
-        Logging in...
+        Register...
       </TitleBar>
       <div className={styles.Body}>
         <div className={styles.FormGroup}>
@@ -72,7 +73,7 @@ export default function Login(props: Props) {
         <div className={styles.FormGroup}>
           <img
             className={styles.Captcha}
-            src={ id ? `${process.env.REACT_APP_SERVER}/captcha/${id}.png?reload=${randomId}` : loadImage('theme/captcha.jpg') }
+            src={id ? `${process.env.REACT_APP_SERVER}/captcha/${id}.png?reload=${randomId}` : loadImage('theme/captcha.jpg')}
             onClick={() => setRandomId(Math.random())}
             alt="Captcha"
           />
@@ -94,10 +95,10 @@ export default function Login(props: Props) {
       </div>
       <div className={styles.Footer}>
         <div className={styles.CloseButton}>
-          <CsButton type="danger" onClick={ props.onClose }>Cancel</CsButton>
+          <CsButton type="danger" onClick={props.onClose}>Cancel</CsButton>
         </div>
-        <div className={styles.LoginButton}>
-          <CsButton onClick={ () => null }>Login</CsButton>
+        <div className={styles.RegisterButton}>
+          <CsButton onClick={() => null}>Register</CsButton>
         </div>
       </div>
     </div>
