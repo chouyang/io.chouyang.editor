@@ -8,7 +8,7 @@ type Props = {
   content?: string,
   cancelText?: string,
   confirmText?: string,
-  onClose: () => void,
+  onCancel: () => void,
   onConfirm: () => void,
 }
 
@@ -36,7 +36,7 @@ const Dialog = (props: Props) => {
           <CsButton
             type="info"
             style={{marginRight: '10px'}}
-            onClick={ props.onClose }
+            onClick={ props.onCancel }
           >
             {props.cancelText || 'Cancel'}
           </CsButton>

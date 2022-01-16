@@ -3,17 +3,13 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 export interface MenubarState {
   activeWindow: string;
   activeItem: string;
-  hoverItem: string;
   activeEntry: string;
-  hoverEntry: string;
 }
 
 const initialState: MenubarState = {
   activeWindow: '',
   activeItem: '',
-  hoverItem: '',
   activeEntry: '',
-  hoverEntry: '',
 };
 
 export const menubarSlice = createSlice({
@@ -22,18 +18,16 @@ export const menubarSlice = createSlice({
   reducers: {
     clickMenubar: (state, action: PayloadAction<string>) => {
       state.activeItem = action.payload === state.activeItem ? '' : action.payload;
-      state.hoverItem = '';
     },
     hoverMenubar: (state, action: PayloadAction<string>) => {
-      state.hoverItem = action.payload || '';
+      state.activeItem = state.activeItem ? action.payload : '';
     },
     clickMenubarEntry: (state, action: PayloadAction<string>) => {
       state.activeItem = '';
-      state.hoverItem = '';
       state.activeWindow = action.payload;
     },
     hoverMenubarEntry: (state, action: PayloadAction<string>) => {
-
+      state.activeEntry = action.payload;
     }
   },
 });

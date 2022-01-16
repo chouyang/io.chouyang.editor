@@ -19,13 +19,13 @@ const loadWindow = (window: string): (props: any) => JSX.Element => {
     case 'Register':
       return Register;
     case 'Quit':
-      return () => (
+      return (props: any) => (
         <Dialog
           title="Confirm Exit"
           content="Are you sure you want to exit?"
           confirmText="Quit"
-          onClose={() => useDispatch()(clickMenubarEntry(''))}
-          onConfirm={ exit }
+          onConfirm={exit}
+          onCancel={props.onClose}
         />
       );
     default:
