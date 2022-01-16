@@ -6,8 +6,17 @@ import styles from './ToolPanel.module.scss';
 import {useAppSelector} from "../../../app/hooks";
 import {RootState} from "../../../app/store";
 
-const tree: any[any] = {
-  id: 'chouyang.io', name: 'chouyang.io',
+export type File = {
+  id: string,
+  name: string,
+  extra?: string,
+  icon?: string,
+  children?: File[],
+}
+
+const tree: File = {
+  id: 'chouyang.io',
+  name: 'chouyang.io',
   extra: '~/Workspace/chouyang.io',
   children: [
     {id: 'deploy', name: 'deploy', icon: 'filetype/folder.svg'},

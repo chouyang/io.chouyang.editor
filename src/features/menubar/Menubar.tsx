@@ -22,7 +22,7 @@ export function Menubar() {
         {menu.map((item: any, key) => (
           <li
             key={key}
-            className={[style.MenuItem, activeItem === item.id && 'active'].join(' ')}
+            className={[style.MenuItem, activeItem === item.id && style.Active].join(' ')}
           >
             <span
               onClick={() => dispatch(clickMenubar(item.id))}
@@ -36,7 +36,7 @@ export function Menubar() {
                   sub.id ? (
                     <span
                       key={subKey}
-                      className={[style.DropDownItem, sub.disabled === false ? '' : 'disabled'].join(' ')}
+                      className={[style.DropDownItem, sub.disabled === false ? '' : style.Disabled].join(' ')}
                       onClick={() => dispatch(clickMenubarEntry(sub.window))}
                       onMouseEnter={() => dispatch(hoverMenubarEntry(sub.id))}
                       onMouseLeave={() => dispatch(hoverMenubarEntry(''))}
@@ -52,7 +52,7 @@ export function Menubar() {
                           entry.id ? (
                             <span
                               key={entryKey}
-                              className={[style.DropDownSubItem, entry.disabled === false ? '' : 'disabled'].join(' ')}
+                              className={[style.DropDownSubItem, entry.disabled === false ? '' : style.Disabled].join(' ')}
                               onClick={() => dispatch(clickMenubarEntry(entry.window))}
                             >
                               <span>

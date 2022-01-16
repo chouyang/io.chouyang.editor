@@ -1,26 +1,28 @@
 import React, { useState } from 'react';
 import {loadImage} from "../../../../utils";
-import {File} from "../../toolWindowSlice";
+import {File} from "../ToolPanel";
+import {useAppDispatch} from "../../../../app/hooks";
+import {ActionCreatorWithPayload} from "@reduxjs/toolkit";
 import styles from './FileTree.module.scss';
 
 type Props = {
   tree: File,
   isOpen?: boolean,
   indent?: number,
-  selectFile: (file: File) => void,
-  selectedFile: File | null,
+  selectFile: ActionCreatorWithPayload<string>,
+  selectedFile: string,
 }
 
 const FileTree = (props: Props) => {
-  const {tree, isOpen = true, indent = 0, selectedFile = {id: ''}} = props;
+  const {tree, isOpen = true, indent = 0, selectedFile = ''} = props;
+  const dispatch = useAppDispatch();
 
   const [opened, setOpened] = useState<boolean>(isOpen);
   const {name, icon = '', extra = '', children = []} = tree;
-  const active = selectedFile?.id === tree.id;
+  const active = selectedFile === tree.id;
 
   const handleOnFileClick = () => {
-    const {id, name} = tree;
-    props.selectFile({id, name});
+    dispatch(props.selectFile(tree.id));
   }
 
   const handleOnFileDoubleClick = () => {
@@ -45,7 +47,7 @@ const FileTree = (props: Props) => {
     <div className={styles.FileTree}>
       {/* Name & Icon */ }
       <div
-        className={ [styles.Entry, active && 'active'].join(' ') }
+        className={ [styles.Entry, active ? styles.Active : ''].join(' ') }
         style={ {paddingLeft: `calc(30px * ${ indent })`} }
         onDoubleClick={handleOnFileDoubleClick}
         onClick={handleOnFileClick}

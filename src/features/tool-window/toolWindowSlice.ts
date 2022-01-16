@@ -1,27 +1,18 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-
-export type File = {
-  id: string,
-  name: string,
-  extra?: string,
-  icon?: string,
-  children?: File[],
-}
-
 export interface ToolWindowState {
-  selectedFile: File | null;
+  selectedFile: string;
 }
 
 const initialState: ToolWindowState = {
-  selectedFile: null,
+  selectedFile: '',
 };
 
 export const toolWindowSlice = createSlice({
   name: 'toolWindow',
   initialState,
   reducers: {
-    selectFile: (state, action: PayloadAction<File>) => {
+    selectFile: (state, action: PayloadAction<string>) => {
       state.selectedFile = action.payload
     },
   },
