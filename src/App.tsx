@@ -7,6 +7,7 @@ import {clickMenubarEntry} from "./features/menubar/menubarSlice";
 import {useDispatch} from "react-redux";
 import Dialog from "./components/dialog";
 import About from "./features/about/About";
+import NavigationBar from "./features/navigation-bar/NavigationBar";
 import './App.scss';
 
 const exit = (): void => {
@@ -43,6 +44,7 @@ function App() {
     <div className="App">
       <ActiveWindow onClose={() => dispatch(clickMenubarEntry(''))}/>
       <Menubar/>
+      <NavigationBar />
     </div>
   );
 }
