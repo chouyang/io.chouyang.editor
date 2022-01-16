@@ -16,7 +16,7 @@ const exit = (): void => {
   document.write("<h1 style='text-align: center; margin-top: 49vh'>Bye!</h1><script>setTimeout(() => location.reload(), 2000)</script>");
 }
 
-const loadWindow = (window: string): (props: any) => JSX.Element => {
+const loadWindow = (window: string): ((props: any) => JSX.Element) | null => {
   switch (window) {
     case 'About':
       return About
@@ -35,7 +35,7 @@ const loadWindow = (window: string): (props: any) => JSX.Element => {
         />
       );
     default:
-      return () => <></>;
+      return null;
   }
 }
 
@@ -44,11 +44,15 @@ function App() {
   const ActiveWindow = loadWindow(useAppSelector(state => state.menubar.activeWindow))
   return (
     <div className="App">
-      <ActiveWindow onClose={() => dispatch(clickMenubarEntry(''))}/>
+      {ActiveWindow ? (
+        <div className="Windows">
+          <ActiveWindow onClose={() => dispatch(clickMenubarEntry(''))}/>
+        </div>
+      ) : ''}
       <Menubar/>
-      <NavigationBar />
-      <ToolWindow />
-      <Editor />
+      <NavigationBar/>
+      <ToolWindow/>
+      <Editor/>
     </div>
   );
 }
