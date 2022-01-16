@@ -1,0 +1,21 @@
+@import '../../../../styles/theme';
+
+.ActionBar {
+  position: fixed;
+  top: calc(#{$menu-bar-height} + #{$navigation-bar-height} + 1px);
+  left: $tool-window-bar-width;
+  width: calc(#{$tool-window-width} - 5px);
+  height: $action-bar-height;
+  background-color: $gutter-color;
+  font-size: $font-size;
+  line-height: $line-height;
+  border: $default-border;
+  padding-left: 5px;
+  z-index: 10;
+
+  img {
+    display: inline-block;
+    width: $font-size;
+    height: $font-size;
+  }
+}

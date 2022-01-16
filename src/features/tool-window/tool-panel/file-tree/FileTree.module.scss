@@ -1,0 +1,35 @@
+@import '../../../../styles/theme';
+
+.FileTree {
+  cursor: default;
+  list-style: none;
+  font-size: $font-size;
+  line-height: $line-height;
+  z-index: 9;
+
+  img {
+    width: $font-size;
+    height: $font-size;
+  }
+
+  .Entry {
+    position: relative;
+
+    &.active {
+      color: #FFFFFF;
+      background-color: $active-line-color;
+
+      .ExtraInfo {
+        color: #FFFFFF;
+      }
+    }
+
+    &.semi-active {
+      background-color: $semi-active-line-color;
+    }
+
+    .ExtraInfo {
+      color: $dimmed-text-color;
+    }
+  }
+}

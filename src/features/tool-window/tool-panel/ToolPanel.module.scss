@@ -1,0 +1,12 @@
+@import '../../../styles/theme';
+
+.ToolPanel {
+  width: 100%;
+  overflow: scroll;
+  white-space: nowrap;
+  padding-top: $action-bar-height;
+
+  &>.FileTree {
+    min-height: calc(100vh - #{$menu-bar-height} - #{$navigation-bar-height} - #{$action-bar-height} - #{$status-bar-height});
+  }
+}

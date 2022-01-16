@@ -1,9 +1,11 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import menubarSlice from '../features/menubar/menubarSlice';
+import toolWindowSlice from "../features/tool-window/toolWindowSlice";
 
 export const store = configureStore({
   reducer: {
     menubar: menubarSlice,
+    tool: toolWindowSlice,
   },
 });
 

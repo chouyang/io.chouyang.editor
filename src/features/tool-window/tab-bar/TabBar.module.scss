@@ -1,0 +1,37 @@
+@import '../../../styles/theme';
+
+.TabBar {
+  position: fixed;
+  left: 0;
+  top: calc(#{$menu-bar-height} + #{$navigation-bar-height} + 1px);
+  width: $tool-window-bar-width;
+  height: calc(100vh - #{$menu-bar-height} - #{$navigation-bar-height} - #{$status-bar-height});
+
+  background-color: $gutter-color;
+  border: 1px solid $border-color;
+
+  .BarTab {
+    white-space: nowrap;
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    padding: 5px 2px;
+    height: 90px;
+    font-size: 13px;
+    line-height: 13px;
+    text-align: center;
+    cursor: default;
+
+    &:hover {
+      background-color: $hover-color;
+    }
+
+    &.active {
+      border: 1px solid $border-color;
+      background-color: $highlighted-color;
+    }
+
+    .Number {
+      text-decoration: underline;
+    }
+  }
+}
