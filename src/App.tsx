@@ -6,6 +6,7 @@ import Register from "./features/register/Register";
 import {clickMenubarEntry} from "./features/menubar/menubarSlice";
 import {useDispatch} from "react-redux";
 import Dialog from "./components/dialog";
+import About from "./features/about/About";
 import './App.scss';
 
 const exit = (): void => {
@@ -14,6 +15,8 @@ const exit = (): void => {
 
 const loadWindow = (window: string): (props: any) => JSX.Element => {
   switch (window) {
+    case 'About':
+      return About
     case 'Login':
       return Login;
     case 'Register':

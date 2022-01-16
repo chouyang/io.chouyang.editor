@@ -3,7 +3,7 @@ const menu = [
     id: 'logo',
     label: ' 丑羊v3.2',
     children: [
-      { id: 'about-me', label: 'About 丑羊', window: 'about-me', disabled: false },
+      { id: 'about-me', label: 'About 丑羊', window: 'About', disabled: false },
       { id: 'service', label: 'Service', shortcut: '▶' },
       {},
       { id: 'login', label: 'Login...', window: 'Login', disabled: false },
