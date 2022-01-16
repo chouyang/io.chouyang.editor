@@ -11,6 +11,7 @@ import NavigationBar from "./features/navigation-bar/NavigationBar";
 import ToolWindow from "./features/tool-window/ToolWindow";
 import './App.scss';
 import Editor from "./features/editor/Editor";
+import StatusBar from "./features/status-bar/StatusBar";
 
 const exit = (): void => {
   document.write("<h1 style='text-align: center; margin-top: 49vh'>Bye!</h1><script>setTimeout(() => location.reload(), 2000)</script>");
@@ -53,6 +54,7 @@ function App() {
       <NavigationBar/>
       <ToolWindow/>
       <Editor/>
+      <StatusBar/>
     </div>
   );
 }
