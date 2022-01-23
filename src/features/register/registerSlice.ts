@@ -9,7 +9,7 @@ const initialState: MenubarState = {
 };
 
 export const registerSlice = createSlice({
-  name: 'login',
+  name:     'login',
   initialState,
   reducers: {
     reloadCaptcha: (state, action: PayloadAction<string>) => {

@@ -8,18 +8,18 @@ export interface MenubarState {
 
 const initialState: MenubarState = {
   activeWindow: '',
-  activeItem: '',
-  activeEntry: '',
+  activeItem:   '',
+  activeEntry:  '',
 };
 
 export const menubarSlice = createSlice({
-  name: 'menubar',
+  name:     'menubar',
   initialState,
   reducers: {
-    clickMenubar: (state, action: PayloadAction<string>) => {
+    clickMenubar:      (state, action: PayloadAction<string>) => {
       state.activeItem = action.payload === state.activeItem ? '' : action.payload;
     },
-    hoverMenubar: (state, action: PayloadAction<string>) => {
+    hoverMenubar:      (state, action: PayloadAction<string>) => {
       state.activeItem = state.activeItem ? action.payload : '';
     },
     clickMenubarEntry: (state, action: PayloadAction<string>) => {

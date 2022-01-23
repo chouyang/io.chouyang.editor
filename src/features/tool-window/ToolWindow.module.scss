@@ -1,13 +1,13 @@
-@import '../../styles/theme';
+@import "../../styles/theme";
 
 .ToolWindow {
-  position: fixed;
-  left: 0;
+  position:     fixed;
+  left:         0;
   padding-left: 20px;
-  top: calc(#{$menu-bar-height} + #{$navigation-bar-height} + 1px);
-  width: $tool-window-width;
-  height: calc(100vh - #{$menu-bar-height} - #{$navigation-bar-height} - #{$status-bar-height});
-  overflow: scroll;
+  top:          calc(#{$menu-bar-height} + #{$navigation-bar-height} + 1px);
+  width:        $tool-window-width;
+  height:       calc(100vh - #{$menu-bar-height} - #{$navigation-bar-height} - #{$status-bar-height});
+  overflow:     scroll;
 
-  border: $default-border;
+  border:       $default-border;
 }

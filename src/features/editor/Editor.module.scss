@@ -1,18 +1,18 @@
-@import '../../styles/theme';
+@import "../../styles/theme";
 
 .Editor {
-  position: relative;
-  left: calc(#{$tool-window-width} + #{$tool-window-bar-width} + 2px);
-  top: calc(#{$menu-bar-height} + #{$navigation-bar-height} + 2px);
-  width: calc(100vw - #{$tool-window-width} - #{$tool-window-bar-width} - #{$editor-gutter-width} - 22px);
-  height: calc(100vh - #{$menu-bar-height} - #{$navigation-bar-height} - #{$status-bar-height});
-  padding: 10px 10px 10px calc(#{$editor-gutter-width} + 10px);
-  overflow: hidden;
+  position:              relative;
+  left:                  calc(#{$tool-window-width} + #{$tool-window-bar-width} + 2px);
+  top:                   calc(#{$menu-bar-height} + #{$navigation-bar-height} + 2px);
+  width:                 calc(100vw - #{$tool-window-width} - #{$tool-window-bar-width} - #{$editor-gutter-width} - 22px);
+  height:                calc(100vh - #{$menu-bar-height} - #{$navigation-bar-height} - #{$status-bar-height});
+  padding:               10px 10px 10px calc(#{$editor-gutter-width} + 10px);
+  overflow:              hidden;
 
-  cursor: text;
+  cursor:                text;
   -webkit-touch-callout: default;
-  -webkit-user-select: text;
-  -moz-user-select: text;
-  -ms-user-select: text;
-  user-select: text;
+  -webkit-user-select:   text;
+  -moz-user-select:      text;
+  -ms-user-select:       text;
+  user-select:           text;
 }

@@ -1,25 +1,25 @@
-@import '../../styles/theme';
+@import "../../styles/theme";
 
 .Dialog {
-  position: absolute;
-  left: calc(50vw - 150px);
-  top: calc(50vh - 70px);
-  width: 300px;
-  height: 140px;
+  position:         absolute;
+  left:             calc(50vw - 150px);
+  top:              calc(50vh - 70px);
+  width:            300px;
+  height:           140px;
   background-color: $gutter-color;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, .3);
-  border: $default-border;
-  border-radius: 5px;
-  padding: 10px 20px;
+  box-shadow:       5px 5px 15px rgba(0, 0, 0, .3);
+  border:           $default-border;
+  border-radius:    5px;
+  padding:          10px 20px;
 
   .Body {
-    display: flex;
-    padding-top: 10px;
+    display:         flex;
+    padding-top:     10px;
     justify-content: space-around;
 
     .Logo {
       img {
-        height: 70px;
+        height:        70px;
         border-radius: 70px;
       }
     }
@@ -31,13 +31,13 @@
 
   .Footer {
     position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 30px;
+    bottom:   0;
+    right:    0;
+    width:    100%;
+    height:   30px;
 
     .Buttons {
-      display: flex;
+      display:         flex;
       justify-content: flex-end;
     }
   }

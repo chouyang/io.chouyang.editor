@@ -1,7 +1,7 @@
-import React from 'react';
-import CsButton from '../button';
-import {loadImage} from "../../utils";
-import styles from './index.module.scss';
+import React         from 'react';
+import CsButton      from 'components/button';
+import { loadImage } from "utils";
+import styles        from './index.module.scss';
 
 type Props = {
   title: string,
@@ -15,37 +15,37 @@ type Props = {
 const Dialog = (props: Props) => {
 
   return (
-    <div className={styles.Dialog}>
-      <div className={styles.Body}>
-        <div className={styles.Logo}>
-          <img src={loadImage('avatar.jpg')} alt="Logo" />
+    <div className={ styles.Dialog }>
+      <div className={ styles.Body }>
+        <div className={ styles.Logo }>
+          <img src={ loadImage('avatar.jpg') } alt="Logo"/>
         </div>
-        <div className={styles.Content}>
-          <strong>{props.title}</strong>
+        <div className={ styles.Content }>
+          <strong>{ props.title }</strong>
           <div>
-            {props?.content}
+            { props?.content }
           </div>
           <div>
-            <input type="checkbox" disabled />
-            <small style={{color: '#BBB'}}>Do not ask me again</small>
+            <input type="checkbox" disabled/>
+            <small style={ { color: '#BBBBBB' } }>Do not ask me again</small>
           </div>
         </div>
       </div>
-      <div className={styles.Footer}>
-        <div className={styles.Buttons}>
+      <div className={ styles.Footer }>
+        <div className={ styles.Buttons }>
           <CsButton
             type="info"
-            style={{marginRight: '10px'}}
+            style={ { marginRight: '10px' } }
             onClick={ props.onCancel }
           >
-            {props.cancelText || 'Cancel'}
+            { props.cancelText || 'Cancel' }
           </CsButton>
           <CsButton
-            style={{marginRight: '10px'}}
+            style={ { marginRight: '10px' } }
             type="success"
             onClick={ props.onConfirm }
           >
-            {props.confirmText || 'Confirm'}
+            { props.confirmText || 'Confirm' }
           </CsButton>
         </div>
       </div>

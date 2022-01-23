@@ -4,5 +4,5 @@ export const loadImage = (path?: string): any => {
     return loadImage('filetype/text.svg');
   }
 
-  return require(`../assets/image/${path}`);
+  return require(`../assets/image/${ path }`);
 }

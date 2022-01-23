@@ -1,4 +1,4 @@
-import React from 'react';
+import React  from 'react';
 import styles from './index.module.scss';
 
 type Props = {
@@ -8,13 +8,13 @@ type Props = {
   style?: any,
 }
 
-const CsButton = ({children, onClick, style = {}, type = 'success'}: Props) => {
+const CsButton = ({ children, onClick, style = {}, type = 'success' }: Props) => {
 
   return (
     <button
-      style={style}
+      style={ style }
       onClick={ onClick }
-      className={[styles.CsButton, styles[type]].join(' ')}
+      className={ [styles.CsButton, styles[type]].join(' ') }
     >
       { children }
     </button>

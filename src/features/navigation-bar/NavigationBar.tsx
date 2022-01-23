@@ -1,12 +1,12 @@
-import React from 'react';
+import React       from 'react';
 import Breadcrumbs from './breadcrumbs/Breadcrumbs';
-import styles from './NavigationBar.module.scss';
+import styles      from './NavigationBar.module.scss';
 
 function NavigationBar() {
 
   return (
-    <div className={styles.NavigationBar}>
-      <Breadcrumbs />
+    <div className={ styles.NavigationBar }>
+      <Breadcrumbs/>
     </div>
   )
 }

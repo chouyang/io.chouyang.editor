@@ -1,18 +1,18 @@
-@import '../../../styles/theme';
+@import "../../../styles/theme";
 
 .Gutter {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: $editor-gutter-width;
-  height: 100%;
+  position:         absolute;
+  top:              0;
+  left:             0;
+  width:            $editor-gutter-width;
+  height:           100%;
   background-color: $gutter-color;
-  border: $default-border;
+  border:           $default-border;
 
   .LineNumber {
     list-style: none;
-    width: 100%;
-    height: 100%;
+    width:      100%;
+    height:     100%;
 
     li {
       line-height: $line-height;

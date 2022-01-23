@@ -9,7 +9,7 @@ const initialState: ToolWindowState = {
 };
 
 export const toolWindowSlice = createSlice({
-  name: 'toolWindow',
+  name:     'toolWindow',
   initialState,
   reducers: {
     selectFile: (state, action: PayloadAction<string>) => {

@@ -1,14 +1,14 @@
-@import '../../../../styles/theme';
+@import "../../../../styles/theme";
 
 .FileTree {
-  cursor: default;
-  list-style: none;
-  font-size: $font-size;
+  cursor:      default;
+  list-style:  none;
+  font-size:   $font-size;
   line-height: $line-height;
-  z-index: 9;
+  z-index:     9;
 
   img {
-    width: $font-size;
+    width:  $font-size;
     height: $font-size;
   }
 
@@ -16,7 +16,7 @@
     position: relative;
 
     &.Active {
-      color: #FFFFFF;
+      color:            #FFFFFF;
       background-color: $active-line-color;
 
       .ExtraInfo {

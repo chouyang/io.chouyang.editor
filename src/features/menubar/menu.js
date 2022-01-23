@@ -1,7 +1,7 @@
 const menu = [
   {
-    id: 'logo',
-    label: ' 丑羊v3.2',
+    id:       'logo',
+    label:    ' 丑羊v3.2',
     children: [
       { id: 'about-me', label: 'About 丑羊', window: 'About', disabled: false },
       { id: 'service', label: 'Service', shortcut: '▶' },
@@ -14,12 +14,12 @@ const menu = [
     ]
   },
   {
-    id: 'file',
-    label: 'File',
+    id:       'file',
+    label:    'File',
     children: [
       {
-        id: 'new',
-        label: 'New',
+        id:       'new',
+        label:    'New',
         shortcut: '▶',
         disabled: false,
         children: [
@@ -64,8 +64,8 @@ const menu = [
     ]
   },
   {
-    id: 'edit',
-    label: 'Edit',
+    id:       'edit',
+    label:    'Edit',
     children: [
       { id: 'Undo', label: 'Undo', shortcut: '⌘Z', icon: 'theme/undo.svg' },
       { id: 'redo', label: 'Redo', shortcut: '⇧⌘Z', icon: 'theme/redo.svg' },
@@ -103,8 +103,8 @@ const menu = [
     ]
   },
   {
-    id: 'view',
-    label: 'View',
+    id:       'view',
+    label:    'View',
     children: [
       { id: 'tool-window', label: 'Tool Window', shortcut: '▶' },
       { id: 'appearance', label: 'Appearance', shortcut: '▶' },
@@ -134,8 +134,8 @@ const menu = [
     ]
   },
   {
-    id: 'navigate',
-    label: 'Navigate',
+    id:       'navigate',
+    label:    'Navigate',
     children: [
       { id: 'back', label: 'Back', shortcut: '⌘[', icon: 'theme/back.svg' },
       { id: 'forward', label: 'Forward', shortcut: '⌘]', icon: 'theme/forward.svg' },
@@ -177,8 +177,8 @@ const menu = [
     ]
   },
   {
-    id: 'code',
-    label: 'Code',
+    id:       'code',
+    label:    'Code',
     children: [
       { id: 'override-methods', label: 'Override Methods...', shortcut: '⌃O' },
       { id: 'generate', label: 'Generate...', shortcut: '⌘N' },
@@ -218,8 +218,8 @@ const menu = [
     ]
   },
   {
-    id: 'refactor',
-    label: 'Refactor',
+    id:       'refactor',
+    label:    'Refactor',
     children: [
       { id: 'refactor-this', label: 'Refactor This...', shortcut: '⌃T' },
       { id: 'rename', label: 'Rename...', shortcut: '⇧F6' },
@@ -239,8 +239,8 @@ const menu = [
     ]
   },
   {
-    id: 'run',
-    label: 'Run',
+    id:       'run',
+    label:    'Run',
     children: [
       { id: 'run', label: 'Run', shortcut: '⌃R', icon: 'theme/run-disabled.svg' },
       { id: 'debug', label: 'Debug', shortcut: '⌃D', icon: 'theme/debug-disabled.svg' },
@@ -264,8 +264,8 @@ const menu = [
     ]
   },
   {
-    id: 'tools',
-    label: 'Tools',
+    id:       'tools',
+    label:    'Tools',
     children: [
       { id: 'tasks-contexts', label: 'Tasks & Contexts', shortcut: '▶' },
       {},
@@ -289,8 +289,8 @@ const menu = [
     ]
   },
   {
-    id: 'vcs',
-    label: 'VCS',
+    id:       'vcs',
+    label:    'VCS',
     children: [
       { id: 'local-history', label: 'Local History', shortcut: '▶' },
       {},
@@ -302,9 +302,9 @@ const menu = [
       { id: 'git', label: 'Git', shortcut: '▶' },
       {},
       {
-        id: 'create-patch-from-local-changes',
+        id:    'create-patch-from-local-changes',
         label: 'Create Patch from Local Changes...',
-        icon: 'theme/patch-file.svg'
+        icon:  'theme/patch-file.svg'
       },
       { id: 'apply-patch', label: 'Apply Patch...' },
       { id: 'apply-patch-from-clipboard', label: 'Apply Patch from Clipboard...' },
@@ -317,8 +317,8 @@ const menu = [
     ]
   },
   {
-    id: 'window',
-    label: 'Window',
+    id:       'window',
+    label:    'Window',
     children: [
       { id: 'minimize', label: 'Minimize', shortcut: '⌘M' },
       { id: 'zoom', label: 'Zoom', shortcut: '⌃⌘=' },
@@ -335,8 +335,8 @@ const menu = [
     ]
   },
   {
-    id: 'help',
-    label: 'Help',
+    id:       'help',
+    label:    'Help',
     children: [
       { id: 'find-action', label: 'Find Action...', shortcut: '⇧⌘A' },
       {},

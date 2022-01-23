@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import {loadImage} from "../../../../utils";
-import {File} from "../ToolPanel";
-import {useAppDispatch} from "../../../../app/hooks";
-import {ActionCreatorWithPayload} from "@reduxjs/toolkit";
-import styles from './FileTree.module.scss';
+import React, { useState }          from 'react';
+import { loadImage }                from "utils";
+import { File }                     from "../ToolPanel";
+import { useAppDispatch }           from "app/hooks";
+import { ActionCreatorWithPayload } from "@reduxjs/toolkit";
+import styles                       from './FileTree.module.scss';
 
 type Props = {
   tree: File,
@@ -14,11 +14,11 @@ type Props = {
 }
 
 const FileTree = (props: Props) => {
-  const {tree, isOpen = true, indent = 0, selectedFile = ''} = props;
+  const { tree, isOpen = true, indent = 0, selectedFile = '' } = props;
   const dispatch = useAppDispatch();
 
   const [opened, setOpened] = useState<boolean>(isOpen);
-  const {name, icon = '', extra = '', children = []} = tree;
+  const { name, icon = '', extra = '', children = [] } = tree;
   const active = selectedFile === tree.id;
 
   const handleOnFileClick = () => {
@@ -37,37 +37,37 @@ const FileTree = (props: Props) => {
   const getIconName = () => {
     const icon = opened ? 'arrow-down' : 'arrow-right';
     if (active) {
-      return `theme/${icon}-active.svg`;
+      return `theme/${ icon }-active.svg`;
     }
 
-    return `theme/${icon}.svg`;
+    return `theme/${ icon }.svg`;
   }
 
   return (
-    <div className={styles.FileTree}>
+    <div className={ styles.FileTree }>
       {/* Name & Icon */ }
       <div
         className={ [styles.Entry, active ? styles.Active : ''].join(' ') }
-        style={ {paddingLeft: `calc(30px * ${ indent })`} }
-        onDoubleClick={handleOnFileDoubleClick}
-        onClick={handleOnFileClick}
+        style={ { paddingLeft: `calc(30px * ${ indent })` } }
+        onDoubleClick={ handleOnFileDoubleClick }
+        onClick={ handleOnFileClick }
       >
         { children.length > 0 ? (
           <span>
             <img
-              src={ loadImage(getIconName())}
+              src={ loadImage(getIconName()) }
               alt="arrow"
               onClick={ handleOnArrowClick }
             />
             &nbsp;
-            <img src={ loadImage('filetype/folder.svg')} alt="folder" />
+            <img src={ loadImage('filetype/folder.svg') } alt="folder"/>
           </span>
         ) : (
-          <img src={ loadImage(icon) } alt="file" />
-        ) }
+            <img src={ loadImage(icon) } alt="file"/>
+          ) }
 
         <span> { name } </span>
-        <span className={styles.ExtraInfo}>{ extra }</span>
+        <span className={ styles.ExtraInfo }>{ extra }</span>
       </div>
 
       {/* Children */ }
@@ -76,8 +76,8 @@ const FileTree = (props: Props) => {
           tree={ child }
           key={ key }
           indent={ indent + 1 }
-          selectFile={props.selectFile}
-          selectedFile={props.selectedFile}
+          selectFile={ props.selectFile }
+          selectedFile={ props.selectedFile }
         />
       ) }
     </div>

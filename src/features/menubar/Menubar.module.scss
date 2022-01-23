@@ -1,58 +1,58 @@
-@import '../../styles/theme';
+@import "../../styles/theme";
 
 .MenuBar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  margin: 0;
-  padding: 0;
-  height: $menu-bar-height;
-  width: 100vw;
+  position:         fixed;
+  top:              0;
+  left:             0;
+  margin:           0;
+  padding:          0;
+  height:           $menu-bar-height;
+  width:            100vw;
   background-color: $gutter-color;
-  font-size: $font-size;
-  z-index: 30;
+  font-size:        $font-size;
+  z-index:          30;
 
   .MenuList {
     list-style: none;
 
     .MenuItem {
-      float: left;
+      float:        left;
       margin-right: 10px;
-      padding: 2px 4px;
-      cursor: default;
-      position: relative;
+      padding:      2px 4px;
+      cursor:       default;
+      position:     relative;
 
       &.Active {
         background-color: $active-line-color;
-        color: #FFFFFF;
+        color:            #FFFFFF;
       }
 
       .DropDown, .DropDownSub {
-        position: absolute;
-        top: $menu-bar-height;
-        background-color: #E2E3E9;
-        width: auto;
-        min-width: 200px;
-        white-space: nowrap;
-        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2);
-        border-bottom-left-radius: 5px;
+        position:                   absolute;
+        top:                        $menu-bar-height;
+        background-color:           #E2E3E9;
+        width:                      auto;
+        min-width:                  200px;
+        white-space:                nowrap;
+        box-shadow:                 0 8px 16px 0 rgba(0, 0, 0, .2);
+        border-bottom-left-radius:  5px;
         border-bottom-right-radius: 5px;
-        z-index: 31;
+        z-index:                    31;
 
         hr {
           border-top: 1px solid $dimmed-text-color;
-          margin: 1px 0;
+          margin:     1px 0;
         }
 
         .DropDownItem, .DropDownSubItem {
-          display: flex;
+          display:         flex;
           justify-content: space-between;
-          color: #000;
-          padding: 3px 7px;
+          color:           #000000;
+          padding:         3px 7px;
           text-decoration: none;
 
           &:hover {
-            color: #FFFFFF;
+            color:            #FFFFFF;
             background-color: $active-line-color;
           }
 
@@ -65,23 +65,23 @@
           }
 
           img {
-            display: inline-block;
+            display:        inline-block;
             vertical-align: middle;
-            margin-right: 5px;
+            margin-right:   5px;
           }
         }
       }
 
       .DropDownSubWrapper {
-        float: right;
+        float:    right;
         position: relative;
 
         .DropDownSub {
-          position: absolute;
-          top: 0;
-          left: 20px;
-          overflow: hidden;
-          border-top-left-radius: 5px;
+          position:                absolute;
+          top:                     0;
+          left:                    20px;
+          overflow:                hidden;
+          border-top-left-radius:  5px;
           border-top-right-radius: 5px;
         }
       }
