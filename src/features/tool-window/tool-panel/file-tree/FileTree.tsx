@@ -1,28 +1,24 @@
-import React, { useState }          from 'react';
-import { loadImage }                from "utils";
-import { File }                     from "../ToolPanel";
-import { useAppDispatch }           from "app/hooks";
-import { ActionCreatorWithPayload } from "@reduxjs/toolkit";
-import styles                       from './FileTree.module.scss';
+import React, { useState } from 'react';
+import { loadImage }       from "utils";
+// import { useAppDispatch }           from "app/hooks";
+import { Tree }            from "appSlice";
+import styles              from './FileTree.module.scss';
 
 type Props = {
-  tree: File,
+  tree: Tree,
   isOpen?: boolean,
   indent?: number,
-  selectFile: ActionCreatorWithPayload<string>,
-  selectedFile: string,
 }
 
 const FileTree = (props: Props) => {
-  const { tree, isOpen = true, indent = 0, selectedFile = '' } = props;
-  const dispatch = useAppDispatch();
+  const { tree, isOpen = true, indent = 0 } = props;
+  // const dispatch = useAppDispatch();
 
   const [opened, setOpened] = useState<boolean>(isOpen);
-  const { name, icon = '', extra = '', children = [] } = tree;
-  const active = selectedFile === tree.id;
+  const active = false;
 
   const handleOnFileClick = () => {
-    dispatch(props.selectFile(tree.id));
+
   }
 
   const handleOnFileDoubleClick = () => {
@@ -48,38 +44,41 @@ const FileTree = (props: Props) => {
       {/* Name & Icon */ }
       <div
         className={ [styles.Entry, active ? styles.Active : ''].join(' ') }
-        style={ { paddingLeft: `calc(30px * ${ indent })` } }
+        style={ { paddingLeft: `calc(10px + ${ indent }px)` } }
         onDoubleClick={ handleOnFileDoubleClick }
         onClick={ handleOnFileClick }
       >
-        { children.length > 0 ? (
-          <span>
-            <img
-              src={ loadImage(getIconName()) }
-              alt="arrow"
-              onClick={ handleOnArrowClick }
-            />
+        {/* FOLDER NAME */}
+        <span>
+          <img
+            src={ loadImage(getIconName()) }
+            alt="arrow"
+            onClick={ handleOnArrowClick }
+          />
+          &nbsp;
+          <img src={ loadImage('filetype/folder.svg') } alt="folder"/>
+        </span>
+        <span> { tree.name } </span>
+        <span className={ styles.ExtraInfo }>~</span>
+
+        {/* SUB TREE */}
+        { tree.trees.map((t: Tree, k) => (
+          <FileTree
+            tree={t}
+            key={k}
+            indent={indent + 5}
+          />
+        )) }
+
+        {/* FILE LIST  */}
+        {tree.files.map((f: string) => (
+          <p style={{paddingLeft: "15px"}}>
+            <img src={ loadImage('filetype/go.svg') } alt="file"/>
             &nbsp;
-            <img src={ loadImage('filetype/folder.svg') } alt="folder"/>
-          </span>
-        ) : (
-            <img src={ loadImage(icon) } alt="file"/>
-          ) }
-
-        <span> { name } </span>
-        <span className={ styles.ExtraInfo }>{ extra }</span>
+            { f }
+          </p>
+        ))}
       </div>
-
-      {/* Children */ }
-      { opened && children.map((child: File, key: number) =>
-        <FileTree
-          tree={ child }
-          key={ key }
-          indent={ indent + 1 }
-          selectFile={ props.selectFile }
-          selectedFile={ props.selectedFile }
-        />
-      ) }
     </div>
   );
 };
