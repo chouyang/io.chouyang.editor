@@ -3,6 +3,7 @@ import { loadImage }       from "utils";
 // import { useAppDispatch }           from "app/hooks";
 import { Tree }            from "appSlice";
 import styles              from './FileTree.module.scss';
+import { getFileIcon }     from "./fileTreeSlice";
 
 type Props = {
   tree: Tree,
@@ -48,7 +49,7 @@ const FileTree = (props: Props) => {
         onDoubleClick={ handleOnFileDoubleClick }
         onClick={ handleOnFileClick }
       >
-        {/* FOLDER NAME */}
+        {/* FOLDER NAME */ }
         <span>
           <img
             src={ loadImage(getIconName()) }
@@ -61,23 +62,23 @@ const FileTree = (props: Props) => {
         <span> { tree.name } </span>
         <span className={ styles.ExtraInfo }>~</span>
 
-        {/* SUB TREE */}
+        {/* SUB TREE */ }
         { tree.trees.map((t: Tree, k) => (
           <FileTree
-            tree={t}
-            key={k}
-            indent={indent + 5}
+            tree={ t }
+            key={ k }
+            indent={ indent + 5 }
           />
         )) }
 
-        {/* FILE LIST  */}
-        {tree.files.map((f: string) => (
-          <p style={{paddingLeft: "15px"}}>
-            <img src={ loadImage('filetype/go.svg') } alt="file"/>
+        {/* FILE LIST  */ }
+        { tree.files.map((f: string) => (
+          <p style={ { paddingLeft: "15px" } }>
+            <img src={ loadImage(getFileIcon(f)) } alt="file"/>
             &nbsp;
             { f }
           </p>
-        ))}
+        )) }
       </div>
     </div>
   );
