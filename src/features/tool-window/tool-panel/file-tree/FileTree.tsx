@@ -72,8 +72,8 @@ const FileTree = (props: Props) => {
         )) }
 
         {/* FILE LIST  */ }
-        { tree.files.map((f: string) => (
-          <p style={ { paddingLeft: "15px" } }>
+        { tree.files.map((f: string, key) => (
+          <p style={ { paddingLeft: "15px" } } key={key}>
             <img src={ loadImage(getFileIcon(f)) } alt="file"/>
             &nbsp;
             { f }
