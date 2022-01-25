@@ -18,9 +18,10 @@ export interface Tree {
   id: number,
   name: string,
   path: string
+  extra: string,
   created_at: string,
   updated_at: string,
-  files: (string)[],
+  files: (File)[],
   trees: (Tree)[],
 }
 
@@ -47,6 +48,7 @@ const initialState: AppState = {
     id:         0,
     name:       '',
     path:       '',
+    extra:      '',
     created_at: '',
     updated_at: '',
     files:      [],

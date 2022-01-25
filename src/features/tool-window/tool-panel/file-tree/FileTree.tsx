@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { loadImage }       from "utils";
 // import { useAppDispatch }           from "app/hooks";
-import { Tree }            from "appSlice";
+import { File, Tree }            from "appSlice";
 import styles              from './FileTree.module.scss';
 import { getFileIcon }     from "./fileTreeSlice";
 
@@ -60,7 +60,7 @@ const FileTree = (props: Props) => {
           <img src={ loadImage('filetype/folder.svg') } alt="folder"/>
         </span>
         <span> { tree.name } </span>
-        <span className={ styles.ExtraInfo }>~</span>
+        <span className={ styles.ExtraInfo }>{tree.extra}</span>
 
         {/* SUB TREE */ }
         { tree.trees.map((t: Tree, k) => (
@@ -72,11 +72,11 @@ const FileTree = (props: Props) => {
         )) }
 
         {/* FILE LIST  */ }
-        { tree.files.map((f: string, key) => (
-          <p style={ { paddingLeft: "15px" } } key={key}>
-            <img src={ loadImage(getFileIcon(f)) } alt="file"/>
+        { tree.files.map((f: File, key) => (
+          <p style={ { paddingLeft: "17px" } } key={key}>
+            <img src={ loadImage(getFileIcon(f.mime)) } alt="file"/>
             &nbsp;
-            { f }
+            { f.name }
           </p>
         )) }
       </div>
