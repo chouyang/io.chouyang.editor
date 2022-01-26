@@ -3,7 +3,7 @@ import { loadImage }      from "utils";
 import { useAppDispatch } from "app/hooks";
 import {
   File, Tree, selectItem, setOpenedFile, fetchFile,
-} from "appSlice";
+}                         from "appSlice";
 import { getFileIcon }    from "./fileTreeSlice";
 import styles             from './FileTree.module.scss';
 
@@ -42,24 +42,22 @@ const FileTree = (props: Props) => {
     <div className={ styles.FileTree }>
       {/* Name & Icon */ }
       <div
-        style={ { paddingLeft: `calc(25px * ${ indent })` } }
+        style={ { paddingLeft: `calc(17px * ${ indent })` } }
         className={ [styles.Entry, props.selected?.path === tree.path ? styles.Active : ''].join(' ') }
         onClick={ () => dispatch(selectItem(tree)) }
         onDoubleClick={ expandTree }
       >
         {/* FOLDER NAME */ }
         <span>
-            <img
-              src={ loadImage(getIconName()) }
-              alt="arrow"
-              onClick={ expandTree }
-            />
+          <img
+            src={ loadImage(getIconName()) }
+            alt="arrow"
+            onClick={ expandTree }
+          />
           &nbsp;
           <img src={ loadImage('filetype/folder.svg') } alt="folder"/>
-          </span>
-        <span>
-            { tree.name }
-          </span>
+        </span>
+        <span> { tree.name } </span>
         <span className={ styles.ExtraInfo }>{ tree.extra }</span>
       </div>
 
@@ -82,12 +80,14 @@ const FileTree = (props: Props) => {
           { tree.files.map((f: File, key) => (
             <div
               key={ key }
-              style={ { paddingLeft: `calc(25px * ${ indent })` } }
               onClick={ () => dispatch(selectItem(f)) }
               onDoubleClick={ () => handleOpenFile(f.path) }
               className={ [styles.Entry, props.selected?.path === f.path ? styles.Active : ''].join(' ') }
             >
-              <p style={ { paddingLeft: "17px" } }>
+              <p
+                style={ { paddingLeft: `calc(17px * ${ indent } + 35px)` } }
+                className={ styles.File }
+              >
                 <img src={ loadImage(getFileIcon(f.mime)) } alt="file"/>
                 &nbsp;
                 { f.name }
