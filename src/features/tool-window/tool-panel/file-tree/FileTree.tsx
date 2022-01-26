@@ -2,8 +2,8 @@ import React              from 'react';
 import { loadImage }      from "utils";
 import { useAppDispatch } from "app/hooks";
 import {
-  File, Tree, selectItem,
-}                         from "appSlice";
+  File, Tree, selectItem, setOpenedFile, fetchFile,
+} from "appSlice";
 import { getFileIcon }    from "./fileTreeSlice";
 import styles             from './FileTree.module.scss';
 
@@ -23,6 +23,10 @@ const FileTree = (props: Props) => {
   const expandTree = (e: React.FormEvent) => {
     e.stopPropagation();
     setExpanded(!expanded);
+  }
+
+  const handleOpenFile = (path: string) => {
+    fetchFile(path).then(res => dispatch(setOpenedFile(res)))
   }
 
   const getIconName = () => {
@@ -80,6 +84,7 @@ const FileTree = (props: Props) => {
               key={ key }
               style={ { paddingLeft: `calc(25px * ${ indent })` } }
               onClick={ () => dispatch(selectItem(f)) }
+              onDoubleClick={ () => handleOpenFile(f.path) }
               className={ [styles.Entry, props.selected?.path === f.path ? styles.Active : ''].join(' ') }
             >
               <p style={ { paddingLeft: "17px" } }>

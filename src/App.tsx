@@ -1,17 +1,17 @@
-import React, { useEffect }  from "react";
-import { useDispatch }       from "react-redux";
-import { useAppSelector }    from "app/hooks";
+import React, { useEffect }           from "react";
+import { useDispatch }                from "react-redux";
+import { useAppSelector }             from "app/hooks";
 import { clickMenubarEntry }          from "features/menubar/menubarSlice";
 import { fetchFileTree, setFileTree } from "appSlice";
 import { Menubar }                    from "features/menubar/Menubar";
-import Login                 from "features/login/Login";
-import Register              from "features/register/Register";
-import Dialog                from "components/dialog";
-import About                 from "features/about/About";
-import NavigationBar         from "features/navigation-bar/NavigationBar";
-import ToolWindow            from "features/tool-window/ToolWindow";
-import Editor                from "features/editor/Editor";
-import StatusBar             from "features/status-bar/StatusBar";
+import Login                          from "features/login/Login";
+import Register                       from "features/register/Register";
+import Dialog                         from "components/dialog";
+import About                          from "features/about/About";
+import NavigationBar                  from "features/navigation-bar/NavigationBar";
+import ToolWindow                     from "features/tool-window/ToolWindow";
+import Editor                         from "features/editor/Editor";
+import StatusBar                      from "features/status-bar/StatusBar";
 import 'App.scss';
 
 const exit = (): void => {
