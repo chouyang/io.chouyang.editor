@@ -26,24 +26,12 @@ export interface Tree {
 }
 
 export interface AppState {
-  file: File,
+  selected: File | Tree | null,
   fileTree: Tree;
 }
 
 const initialState: AppState = {
-  file:     {
-    id:         0,
-    name:       '',
-    path:       '',
-    size:       0,
-    mime:       '',
-    hash:       '',
-    permission: '',
-    content:    '',
-    created_by: 0,
-    created_at: '',
-    updated_at: '',
-  },
+  selected: null,
   fileTree: {
     id:         0,
     name:       '',
@@ -63,6 +51,9 @@ export const appSlice = createSlice({
     setFileTree: (state, action: PayloadAction<Tree>) => {
       state.fileTree = action.payload;
     },
+    selectItem:  (state, action: PayloadAction<File | Tree | null>) => {
+      state.selected = action.payload;
+    },
   },
 });
 
@@ -71,6 +62,8 @@ export const fetchFileTree = () => {
     .then(res => res.json())
 }
 
-export const { setFileTree } = appSlice.actions;
+export const {
+  setFileTree, selectItem,
+} = appSlice.actions;
 
 export default appSlice.reducer;
