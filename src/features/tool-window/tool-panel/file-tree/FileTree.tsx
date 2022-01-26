@@ -10,6 +10,7 @@ import styles             from './FileTree.module.scss';
 type Props = {
   tree: Tree,
   selected: File | Tree | null,
+  opened: boolean
   indent?: number,
 }
 
@@ -17,7 +18,7 @@ const FileTree = (props: Props) => {
   const { tree, indent = 0 } = props;
   const dispatch = useAppDispatch();
 
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = React.useState(props.opened);
 
   const expandTree = (e: React.FormEvent) => {
     e.stopPropagation();
@@ -68,6 +69,7 @@ const FileTree = (props: Props) => {
                 key={ k }
                 indent={ indent + 1 }
                 selected={ props.selected }
+                opened={ false }
               />
             )) }
           </div>

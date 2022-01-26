@@ -36,9 +36,9 @@ const initialState: AppState = {
   selected: null,
   fileTree: {
     id:         0,
-    name:       '',
+    name:       ' ! ',
     path:       '',
-    extra:      '',
+    extra:      'project not found',
     created_at: '',
     updated_at: '',
     files:      [],
