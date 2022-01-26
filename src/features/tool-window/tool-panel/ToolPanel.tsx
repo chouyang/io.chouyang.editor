@@ -14,7 +14,6 @@ const ToolPanel = () => {
       <FileTree
         tree={ tree }
         selected={selected}
-        isOpen={false}
       />
     </div>
   )

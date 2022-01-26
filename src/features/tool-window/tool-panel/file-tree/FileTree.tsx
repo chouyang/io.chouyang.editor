@@ -1,40 +1,31 @@
-import React, { useState } from 'react';
-import { loadImage }       from "utils";
-import { useAppDispatch }  from "app/hooks";
+import React              from 'react';
+import { loadImage }      from "utils";
+import { useAppDispatch } from "app/hooks";
 import {
   File, Tree, selectItem,
-}                          from "appSlice";
-import { getFileIcon }     from "./fileTreeSlice";
-import styles              from './FileTree.module.scss';
+}                         from "appSlice";
+import { getFileIcon }    from "./fileTreeSlice";
+import styles             from './FileTree.module.scss';
 
 type Props = {
   tree: Tree,
   selected: File | Tree | null,
-  isOpen?: boolean,
   indent?: number,
 }
 
 const FileTree = (props: Props) => {
-  const { tree, isOpen = true, indent = 0 } = props;
+  const { tree, indent = 0 } = props;
   const dispatch = useAppDispatch();
 
-  const [opened, setOpened] = useState<boolean>(isOpen);
+  const [expanded, setExpanded] = React.useState(false);
 
-  const handleOnFileClick = () => {
-
-  }
-
-  const handleOnFileDoubleClick = () => {
-    setOpened(!opened);
-  }
-
-  const handleOnArrowClick = (e: React.FormEvent) => {
+  const expandTree = (e: React.FormEvent) => {
     e.stopPropagation();
-    setOpened(!opened);
+    setExpanded(!expanded);
   }
 
   const getIconName = () => {
-    const icon = opened ? 'arrow-down' : 'arrow-right';
+    const icon = expanded ? 'arrow-down' : 'arrow-right';
     if (props.selected?.path === tree.path) {
       return `theme/${ icon }-active.svg`;
     }
@@ -46,58 +37,58 @@ const FileTree = (props: Props) => {
     <div className={ styles.FileTree }>
       {/* Name & Icon */ }
       <div
-        onDoubleClick={ handleOnFileDoubleClick }
-        onClick={ handleOnFileClick }
+        style={ { paddingLeft: `calc(25px * ${ indent })` } }
+        className={ [styles.Entry, props.selected?.path === tree.path ? styles.Active : ''].join(' ') }
+        onClick={ () => dispatch(selectItem(tree)) }
+        onDoubleClick={ expandTree }
       >
-        <div
-          style={ { paddingLeft: `calc(25px * ${ indent })` } }
-          className={ [styles.Entry, props.selected?.path === tree.path ? styles.Active : ''].join(' ') }
-          onClick={ () => dispatch(selectItem(tree)) }
-        >
-          {/* FOLDER NAME */ }
-          <span>
+        {/* FOLDER NAME */ }
+        <span>
             <img
               src={ loadImage(getIconName()) }
               alt="arrow"
-              onClick={ handleOnArrowClick }
+              onClick={ expandTree }
             />
-            &nbsp;
-            <img src={ loadImage('filetype/folder.svg') } alt="folder"/>
+          &nbsp;
+          <img src={ loadImage('filetype/folder.svg') } alt="folder"/>
           </span>
-          <span>
+        <span>
             { tree.name }
           </span>
-          <span className={ styles.ExtraInfo }>{ tree.extra }</span>
-        </div>
-
-        <div>
-          {/* SUB TREE */ }
-          { tree.trees.map((t: Tree, k) => (
-            <FileTree
-              tree={ t }
-              key={ k }
-              indent={ indent + 1 }
-              selected={ props.selected }
-            />
-          )) }
-        </div>
-
-        {/* FILE LIST  */ }
-        { tree.files.map((f: File, key) => (
-          <div
-            key={key}
-            style={ { paddingLeft: `calc(25px * ${ indent })` } }
-            onClick={ () => dispatch(selectItem(f)) }
-            className={ [styles.Entry, props.selected?.path === f.path ? styles.Active : ''].join(' ') }
-          >
-            <p style={ { paddingLeft: "17px" } }>
-              <img src={ loadImage(getFileIcon(f.mime)) } alt="file"/>
-              &nbsp;
-              { f.name }
-            </p>
-          </div>
-        )) }
+        <span className={ styles.ExtraInfo }>{ tree.extra }</span>
       </div>
+
+      { expanded ? (
+        <>
+          <div>
+            {/* SUB TREE */ }
+            { tree.trees.map((t: Tree, k) => (
+              <FileTree
+                tree={ t }
+                key={ k }
+                indent={ indent + 1 }
+                selected={ props.selected }
+              />
+            )) }
+          </div>
+
+          {/* FILE LIST  */ }
+          { tree.files.map((f: File, key) => (
+            <div
+              key={ key }
+              style={ { paddingLeft: `calc(25px * ${ indent })` } }
+              onClick={ () => dispatch(selectItem(f)) }
+              className={ [styles.Entry, props.selected?.path === f.path ? styles.Active : ''].join(' ') }
+            >
+              <p style={ { paddingLeft: "17px" } }>
+                <img src={ loadImage(getFileIcon(f.mime)) } alt="file"/>
+                &nbsp;
+                { f.name }
+              </p>
+            </div>
+          )) }
+        </>
+      ) : '' }
     </div>
   );
 };

@@ -12,6 +12,7 @@ export interface File {
   created_by: number,
   created_at: string,
   updated_at: string,
+  opened?: boolean,
 }
 
 export interface Tree {
@@ -21,6 +22,7 @@ export interface Tree {
   extra: string,
   created_at: string,
   updated_at: string,
+  opened?: boolean,
   files: (File)[],
   trees: (Tree)[],
 }
@@ -41,6 +43,7 @@ const initialState: AppState = {
     updated_at: '',
     files:      [],
     trees:      [],
+    opened:     false,
   },
 };
 
