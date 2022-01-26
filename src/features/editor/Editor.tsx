@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import ReactMarkdown        from 'react-markdown';
+import React, { useEffect }           from 'react';
+import ReactMarkdown                  from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vs }                         from 'react-syntax-highlighter/dist/esm/styles/prism';
 import gfm                            from 'remark-gfm';
@@ -16,13 +16,17 @@ const getMdModifier = (name: string) => {
 }
 
 const wrapContent = (name: string, content: string) => {
-  return `\`\`\`${getMdModifier(name)}\n${content}\n\`\`\``;
+  return `\`\`\`${ getMdModifier(name) }\n${ content }\n\`\`\``;
+}
+
+const isImage = (mime: string) => {
+  return;
 }
 
 function Editor() {
   const [content, setContent] = React.useState(`### 
 
-# ${process.env.REACT_APP_NAME}
+# ${ process.env.REACT_APP_NAME }
 ### Inspired by JetBrains IDEs.
 
 ~~~shell
@@ -53,15 +57,22 @@ docker-compose up -d
 
   return (
     <div className={ styles.Editor }>
-      <div className={styles.Wrapper}>
+      <div className={ styles.Wrapper }>
         <Gutter/>
-        <ReactMarkdown
-          className={ styles.Markdown }
-          plugins={ [gfm] }
-          children={ content }
-          linkTarget="_blank"
-          components={ components }
-        />
+        { opened?.mime.startsWith('image/') ? (
+          <div
+            style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            dangerouslySetInnerHTML={ {__html: opened.content } }
+          />
+        ) : (
+            <ReactMarkdown
+              className={ styles.Markdown }
+              plugins={ [gfm] }
+              children={ content }
+              linkTarget="_blank"
+              components={ components }
+            />
+          ) }
       </div>
     </div>
   );
