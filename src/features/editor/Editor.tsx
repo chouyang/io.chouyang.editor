@@ -4,8 +4,8 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vs }                         from 'react-syntax-highlighter/dist/esm/styles/prism';
 import gfm                            from 'remark-gfm';
 import Gutter                         from 'features/editor/gutter/Gutter';
-import { useAppSelector }             from "../../app/hooks";
-import { RootState }                  from "../../app/store";
+import { useAppSelector }             from "app/hooks";
+import { RootState }                  from "app/store";
 import styles                         from './Editor.module.scss';
 
 const getMdModifier = (name: string) => {
@@ -19,10 +19,6 @@ const wrapContent = (name: string, content: string) => {
   return `\`\`\`${ getMdModifier(name) }\n${ content }\n\`\`\``;
 }
 
-const isImage = (mime: string) => {
-  return;
-}
-
 function Editor() {
   const [content, setContent] = React.useState(`### 
 
@@ -30,8 +26,15 @@ function Editor() {
 ### Inspired by JetBrains IDEs.
 
 ~~~shell
-# fire up
-docker-compose up -d
+
+# fire up service
+cd service
+go run chouyang.io
+
+# fire up client
+cd ../editor
+yarn install
+yarn start
 ~~~
 `);
 
@@ -61,13 +64,13 @@ docker-compose up -d
         <Gutter/>
         { opened?.mime.startsWith('image/') ? (
           <div
-            style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-            dangerouslySetInnerHTML={ {__html: opened.content } }
+            style={ { width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' } }
+            dangerouslySetInnerHTML={ { __html: opened.content } }
           />
         ) : (
             <ReactMarkdown
               className={ styles.Markdown }
-              plugins={ [gfm] }
+              remarkPlugins={ [gfm] }
               children={ content }
               linkTarget="_blank"
               components={ components }
