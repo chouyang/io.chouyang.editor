@@ -1,5 +1,17 @@
 @import "../../../styles/theme";
 
 .Breadcrumbs {
-  cursor: default;
+  cursor:        default;
+  display:       flex;
+  align-content: center;
+}
+
+.Root {
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.Separator {
+  margin: 0 5px;
+  color:  #CCCCCC;
 }

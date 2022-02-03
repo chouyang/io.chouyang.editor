@@ -1,11 +1,10 @@
-import React              from 'react';
-import { loadImage }      from "utils";
-import { useAppDispatch } from "app/hooks";
+import React                      from 'react';
+import { getFileIcon, loadImage } from "utils";
+import { useAppDispatch }         from "app/hooks";
 import {
   File, Tree, selectItem, setOpenedFile, fetchFile,
-}                         from "appSlice";
-import { getFileIcon }    from "./fileTreeSlice";
-import styles             from './FileTree.module.scss';
+}                                 from "appSlice";
+import styles                     from './FileTree.module.scss';
 
 type Props = {
   tree: Tree,
